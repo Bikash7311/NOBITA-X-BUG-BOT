@@ -3,6 +3,10 @@ const SY = require('node-telegram-bot-api');
 const fs = require('fs');
 const path = require('path');
 const config = require('./config');
+if (!config.mainToken) {
+    console.error('❌ BOT_TOKEN environment variable is missing!');
+    process.exit(1);
+}
 const { default: makeWASocket, useMultiFileAuthState, delay, DisconnectReason, makeCacheableSignalKeyStore } = require('@whiskeysockets/baileys');
 const pino = require('pino');
 
